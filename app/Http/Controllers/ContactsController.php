@@ -25,7 +25,7 @@ class ContactsController extends Controller
         // Visualizar como si fuera un "var_dump" lo que contiene la variable de arriba (info de la tabla del database)
         //dd($contacts);
 
-        return view('index', compact('contacts'));
+        return view('contacts.index', compact('contacts'));
 
     }
 
@@ -36,7 +36,7 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('contacts.create');
     }
 
     /**
@@ -51,10 +51,15 @@ class ContactsController extends Controller
             'first_name' => $request->input('first-name'),
             'last_name' => $request->input('last-name'),
             'phone' => $request->input('phone'),
-            'phone_type' => $request->input('phone-type')
+            'phone_type' => $request->input('phone-type'),
+            'users_id' => $request->input('active-user')
         ]);
 
-        return redirect('/contacts');
+        // Grabbing current user id from hidden input
+        $activeUserId = $request->input('active-user');
+
+        // Redirecting to the user contact list
+        return redirect('/users/' . $activeUserId);
     }
 
     /**
@@ -77,7 +82,7 @@ class ContactsController extends Controller
     public function edit($id)
     {
         $currentContact = Contacts::where('id', $id)->first();
-        return view ('edit')->with('currentContact', $currentContact);
+        return view ('contacts.edit')->with('currentContact', $currentContact);
     }
 
     /**
@@ -93,10 +98,14 @@ class ContactsController extends Controller
             'first_name' => $request->input('first-name'),
             'last_name' => $request->input('last-name'),
             'phone' => $request->input('phone'),
-            'phone_type' => $request->input('phone-type')
+            'phone_type' => $request->input('phone-type'),
         ]);
 
-        return redirect('/contacts');
+        // Grabbing current user id from hidden input
+        $activeUserId = $request->input('active-user');
+
+        // Redirecting to the user contact list
+        return redirect('/users/' . $activeUserId);
     }
 
     /**
@@ -108,6 +117,11 @@ class ContactsController extends Controller
     public function destroy($id)
     {
         $currentContact = Contacts::where('id', $id)->delete();
-        return redirect('/contacts');
+
+        // It is possible to call the global variable since it will exist when the code is executed
+        $activeUserId = $_COOKIE['activeUser'];
+
+        // Redirecting to the user contact list
+        return redirect('/users/' . $activeUserId);
     }
 }
