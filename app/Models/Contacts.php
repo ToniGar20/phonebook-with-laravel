@@ -12,9 +12,13 @@ class Contacts extends Model
     protected $table = 'contacts';
     protected $primaryKey = 'id';
     protected $timestamp = false;
-    protected $visible = ['id','first_name', 'last_name', 'phone', 'phone_type', 'created_at'. 'updated_at'];
+    protected $visible = ['id','first_name', 'last_name', 'phone', 'phone_type', 'users_id' ,'created_at'. 'updated_at'];
 
-    protected $fillable = ['first_name', 'last_name', 'phone', 'phone_type'];
+    protected $fillable = ['first_name', 'last_name', 'phone', 'phone_type','users_id'];
 
+    // Relation with the other table
+    public function contactBelongsToUser () {
+        return $this->belongsTo(Users::class);
+    }
 
 }
