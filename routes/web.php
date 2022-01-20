@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Default page of laravel
-Route::view('/', 'welcome');
-
-
-//Name of the url and the controller methods to call that will add all the methods of a resource
 Route::resource('contacts', ContactsController::class);
+Route::resource('users', UsersController::class);
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
