@@ -20,8 +20,14 @@ class CreateContactsTable extends Migration
             $table->string('last_name', 50);
             $table->integer('phone');
             $table->string('phone_type', 50);
+            $table->unsignedInteger('users_id');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));;
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));;
+
+            $table->foreign('users_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade'); // If a user is deleted, his contacts are deleted too
         });
     }
 
