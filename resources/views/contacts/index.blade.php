@@ -17,7 +17,7 @@
     </tr>
 
     <?php
-    foreach ($contacts as $register){
+    foreach ($currentUserContacts as $register){
     ?>
     <tr>
         <td>{{ $register->first_name }}</td>

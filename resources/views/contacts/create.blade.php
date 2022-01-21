@@ -22,4 +22,4 @@
 
 </form>
 
-<a class="home-link" href="/users/{{ $_COOKIE['activeUser'] }}">⬅️Volver</a>
+<a class="home-link" href="/contacts">⬅️Volver</a>

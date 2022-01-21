@@ -22,4 +22,4 @@
     <input class="send-but" type="submit" name="send-new" value="Enviar" required/>
 </form>
 
-<a class="home-link" href="/users/{{ $_COOKIE['activeUser'] }}">⬅️Volver</a>
+<a class="home-link" href="/contacts">⬅️Volver</a>
