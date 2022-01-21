@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ContactsController;
-use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Contacts main routes (resource)
 Route::resource('contacts', ContactsController::class);
-Route::resource('users', UsersController::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome');});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
