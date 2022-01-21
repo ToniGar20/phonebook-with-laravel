@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contacts;
+use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
 {
@@ -13,19 +14,11 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        /* TODO Stuff of gates (learning WTF) */
-//        Gate::define ('hello', function ($user) {
-//            return true;
-//        });
-//
-//        abort_unless(Gate::allows('hello'), 403);
+        // Get all contacts with current user logged in: storing user id and then using it to filter contacts table
+        $currentUser = Auth::user()->id;
+        $currentUserContacts = Contacts::where('users_id', $currentUser)->get();
 
-        $contacts = Contacts::all();
-
-        // Visualizar como si fuera un "var_dump" lo que contiene la variable de arriba (info de la tabla del database)
-        //dd($contacts);
-
-        return view('contacts.index', compact('contacts'));
+        return view('contacts.index', compact('currentUserContacts'));
 
     }
 
@@ -55,11 +48,8 @@ class ContactsController extends Controller
             'users_id' => $request->input('active-user')
         ]);
 
-        // Grabbing current user id from hidden input
-        $activeUserId = $request->input('active-user');
-
         // Redirecting to the user contact list
-        return redirect('/users/' . $activeUserId);
+        return redirect('/contacts');
     }
 
     /**
@@ -101,11 +91,8 @@ class ContactsController extends Controller
             'phone_type' => $request->input('phone-type'),
         ]);
 
-        // Grabbing current user id from hidden input
-        $activeUserId = $request->input('active-user');
-
         // Redirecting to the user contact list
-        return redirect('/users/' . $activeUserId);
+        return redirect('/contacts');
     }
 
     /**
@@ -122,6 +109,6 @@ class ContactsController extends Controller
         $activeUserId = $_COOKIE['activeUser'];
 
         // Redirecting to the user contact list
-        return redirect('/users/' . $activeUserId);
+        return redirect('contacts');
     }
 }
