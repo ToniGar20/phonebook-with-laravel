@@ -33,14 +33,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        //Checking input from login form
-        $email = $request->input('email');
-
-        //Storing current user values of the table
-        $currentUser = Users::where('email',$email)->first();
-
-        // Redirecting to his phonebook, also with all the values needed for the view of the URI
-        return redirect ('users/' . $currentUser->id)->with('currentUser', $currentUser);
+        // Redirecting to a phonebook
+        return redirect ('contacts');
 
         //Default value of te controller of Breeze
         //return redirect()->intended(RouteServiceProvider::HOME);
