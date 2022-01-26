@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Request;
 use App\Models\Contacts;
 use Illuminate\Support\Facades\Auth;
@@ -35,11 +36,13 @@ class ContactsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request\  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
+        $request->validated();
+
         $newContact = Contacts::create([
             'first_name' => $request->input('first-name'),
             'last_name' => $request->input('last-name'),
@@ -82,14 +85,17 @@ class ContactsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContactRequest $request, $id)
     {
-        $editedContact = Contacts::where('id', $id)->update([
+        $request->validated();
+
+        Contacts::where('id', $id)->update([
             'first_name' => $request->input('first-name'),
             'last_name' => $request->input('last-name'),
             'phone' => $request->input('phone'),
             'phone_type' => $request->input('phone-type'),
         ]);
+
 
         // Redirecting to the user contact list
         return redirect('/contacts');
