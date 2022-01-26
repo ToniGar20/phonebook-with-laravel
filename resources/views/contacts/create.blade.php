@@ -1,7 +1,14 @@
 <h1>Añadir contacto</h1>
 
 @if($errors->any())
-
+    <div>
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            // {\!! $errors->first('nameofinput', ':messageOferror') !!}
+            @endforeach
+        </ul>
+    </div>
 @endif
 
 <form class="contact-form" method="post" action="/contacts">

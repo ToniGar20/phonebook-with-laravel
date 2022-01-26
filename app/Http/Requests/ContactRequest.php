@@ -35,14 +35,14 @@ class ContactRequest extends FormRequest
     {
         return [
             'first-name.required' => 'El nombre es requerido',
-            'first-name.between:2,30' => 'El nombre ha de tener entre 2 y 30 caracteres',
+            'first-name.between' => 'El nombre ha de tener entre 2 y 30 caracteres',
 
             'last-name.required' => 'El apellido es requerido',
-            'last-name.between:2,30' => 'El apellido ha de tener entre 2 y 30 caracteres',
+            'last-name.between' => 'El apellido ha de tener entre 2 y 30 caracteres',
 
             'phone.required' => 'El teléfono es requerido',
             'phone.integer' => 'El teléfono ha de tener valor numérico',
-            'phone.size:9' => 'El teléfono ha de tener 9 dígitos',
+            'phone.size' => 'El teléfono ha de tener 9 dígitos',
 
             'phone-type.required' => 'El tipo de teléfono es requerido'
 
