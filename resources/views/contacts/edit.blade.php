@@ -16,9 +16,6 @@
     <label>
         <input type="text" name="phone-type" placeholder="Tipo: Casa, Móvil, Trabajo..." value="{{ $currentContact->phone_type }}" required/>
     </label>
-    <label>
-        <input type="hidden" name="active-user" value="{{ $_COOKIE['activeUser'] }}"/>
-    </label>
     <input class="send-but" type="submit" name="send-new" value="Enviar" required/>
 </form>
 
