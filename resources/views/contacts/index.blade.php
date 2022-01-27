@@ -49,15 +49,17 @@
     </div>
 
     <div>
-        <!-- Authentication -->
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <x-responsive-nav-link :href="route('logout')"
-                                   onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                {{ __('Log Out') }}
-            </x-responsive-nav-link>
-        </form>
+        <!-- Logout -->
+        <div class="d-flex justify-content-end align-items-center">
+            <form method="POST" action="/logout">
+                @csrf
+                <button type="submit">Cerrar sesión</button>
+            </form>
+        </div>
     </div>
+
+    <div>
+        <a href="/">Volver a la Home</a>
+    </div>
+
 </div>
