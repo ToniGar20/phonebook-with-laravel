@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Contacts main routes (resource)
 Route::resource('contacts', ContactsController::class);
 
-Route::get('/', function () { return view('welcome');});
+Route::get('/', function () { return view('homepage');});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
