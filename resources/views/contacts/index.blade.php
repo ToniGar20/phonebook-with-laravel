@@ -37,13 +37,13 @@
     <div class="d-flex col-8 justify-content-start align-items-start p-5">
         <table class="table table-dark">
             <tbody>
-            <tr class="text-primary">
-                <th>Nombre</th>
-                <th>Apellido/s</th>
-                <th>Teléfono</th>
-                <th>Tipo</th>
-                <th>Fecha</th>
-                <th>Acciones</th>
+            <tr>
+                <th class="bg-primary text-white">Nombre</th>
+                <th class="bg-primary text-white">Apellido/s</th>
+                <th class="bg-primary text-white">Teléfono</th>
+                <th class="bg-primary text-white">Tipo</th>
+                <th class="bg-primary text-white">Fecha</th>
+                <th class="bg-primary text-white">Acciones</th>
             </tr>
             @foreach ($currentUserContacts as $register)
                 <tr>
