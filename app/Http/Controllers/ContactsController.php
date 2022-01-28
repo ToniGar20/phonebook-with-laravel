@@ -43,16 +43,23 @@ class ContactsController extends Controller
     {
         $request->validated();
 
-        $newContact = Contacts::create([
+        $favouriteValue = 0;
+        if($request->input('favourite')){
+            $favouriteValue = 1;
+        }
+
+        Contacts::create([
             'first_name' => $request->input('first-name'),
             'last_name' => $request->input('last-name'),
             'phone' => $request->input('phone'),
             'phone_type' => $request->input('phone-type'),
+            'description' => $request->input('description'),
+            'is_favourite' => $favouriteValue,
             'users_id' => Auth::user()->id
         ]);
 
-        // Redirecting to the user contact list
-        return redirect('/contacts');
+        return redirect('contacts');
+
     }
 
     /**
@@ -63,7 +70,8 @@ class ContactsController extends Controller
      */
     public function show($id)
     {
-        //
+        $currentContact = Contacts::where('id', $id)->first();
+        return view ('contacts.show')->with('currentContact', $currentContact);
     }
 
     /**
@@ -89,11 +97,18 @@ class ContactsController extends Controller
     {
         $request->validated();
 
+        $favouriteValue = 0;
+        if($request->input('favourite')){
+            $favouriteValue = 1;
+        }
+
         Contacts::where('id', $id)->update([
             'first_name' => $request->input('first-name'),
             'last_name' => $request->input('last-name'),
             'phone' => $request->input('phone'),
             'phone_type' => $request->input('phone-type'),
+            'description' => $request->input('desciption'),
+            'is_favourite' => $favouriteValue
         ]);
 
 
