@@ -45,36 +45,36 @@
                 <!--  Token generation -->
             @csrf
             @method('POST') <!-- Necesario especificarlo porque hay que modificar un registro. Si no se especifica dará un error porque la ruta edit solamente se sooporta con PUT -->
-                <div class="form-group">
+                <div class="form-group mt-4">
                     <label> Nombre </label>
-                    <input class="form-control" type="text" name="first-name" placeholder="Nombre" required/>
+                    <input class="form-control" type="text" name="first-name" placeholder="Nombre" value="{{ old('first-name' ?? '') }}" required/>
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-4">
                     <label>Apellido/s</label>
-                    <input class="form-control" type="text" name="last-name" placeholder="Apellido/s" required/>
+                    <input class="form-control" type="text" name="last-name" placeholder="Apellido/s" value="{{ old('last-name' ?? '') }}" required/>
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-4">
                     <label>Teléfono</label>
-                    <input class="form-control" type="text" name="phone" placeholder="Teléfono" required/>
+                    <input class="form-control" type="text" name="phone" placeholder="Teléfono" value="{{ old('phone' ?? '') }}" required/>
                 </div>
-                <fieldset class="form-group">
+                <fieldset class="form-group mt-4">
                     <div class="row">
                         <legend class="col-form-label col-sm-2 pt-0">Tipo</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="phone-type" id="mobile-radio" value="Móvil">
+                                <input class="form-check-input" type="radio" name="phone-type" id="mobile-radio" value="Móvil" {{ (old('phone-type') === 'Móvil') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="mobile">
                                     Móvil
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="phone-type" id="home" value="Casa">
+                                <input class="form-check-input" type="radio" name="phone-type" id="home" value="Casa" {{ (old('phone-type') === 'Casa') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="home">
                                     Casa
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="phone-type" id="work" value="Trabajo">
+                                <input class="form-check-input" type="radio" name="phone-type" id="work" value="Trabajo" {{ (old('phone-type') === 'Trabajo') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="work">
                                     Trabajo
                                 </label>
@@ -82,7 +82,15 @@
                         </div>
                     </div>
                 </fieldset>
-                <button class="send-but bg-primary mt-4 text-white btn-md rounded-2 px-3" type="submit" name="send-new">Enviar</button>
+                <div class="form-group mt-4">
+                    <label for="description">Descripción (opcional)</label>
+                    <textarea class="form-control" name="description" rows="3">{{ old('description' ?? '') }}</textarea>
+                </div>
+                <div class="form-check mt-4">
+                    <input type="checkbox" class="form-check-input" name="favourite" value="true" {{ (old('favourite')) ? 'checked' : '' }}>
+                    <label class="form-check-label" for="favourite">Marcar favorito</label>
+                </div>
+                <button class="send-but bg-primary mt-4 text-white btn-md rounded-2 px-3" type="submit">Enviar</button>
             </form>
         </div>
     </div>

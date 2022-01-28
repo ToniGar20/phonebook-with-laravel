@@ -45,19 +45,19 @@
             <!--  Token generation -->
         @csrf
         @method('PUT') <!-- Necesario especificarlo porque hay que modificar un registro. Si no se especifica dará un error porque la ruta edit solamente se sooporta con PUT -->
-            <div class="form-group">
+            <div class="form-group mt-4">
                 <label> Nombre </label>
-                <input class="form-control" type="text" name="first-name" placeholder="Nombre" value="{{ $currentContact->first_name }}" required/>
+                <input class="form-control" type="text" name="first-name" placeholder="Nombre" value="{{ old('first-name', $currentContact->first_name) }}" required/>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-4">
                 <label>Apellido/s</label>
-                <input class="form-control" type="text" name="last-name" placeholder="Apellido/s" value="{{ $currentContact->last_name }}" required/>
+                <input class="form-control" type="text" name="last-name" placeholder="Apellido/s" value="{{ old('last-name', $currentContact->last_name) }}" required/>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-4">
                 <label>Teléfono</label>
-                    <input class="form-control" type="text" name="phone" placeholder="Teléfono" value="{{ $currentContact->phone }}" required/>
+                    <input class="form-control" type="text" name="phone" placeholder="Teléfono" value="{{ old('phone', $currentContact->phone) }}" required/>
             </div>
-            <fieldset class="form-group">
+            <fieldset class="form-group mt-4">
                 <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">Tipo</legend>
                     <div class="col-sm-10">
@@ -74,7 +74,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="phone-type" id="work" value="Trabajo" {{ $currentContact->phone_type === 'Trabajo' ? 'checked' : '' }}/>
+                            <input class="form-check-input" type="radio" name="phone-type" id="work" value="Trabajo" {{ 'phone-type', $currentContact->phone_type === 'Trabajo' ? 'checked' : '' }}/>
                             <label class="form-check-label" for="work">
                                 Trabajo
                             </label>
@@ -82,6 +82,14 @@
                     </div>
                 </div>
             </fieldset>
+            <div class="form-group mt-4">
+                <label for="description">Descripción (opcional)</label>
+                <textarea class="form-control" name="description" rows="3">{{ old('description', $currentContact->description) }}</textarea>
+            </div>
+            <div class="form-check mt-4">
+                <input type="checkbox" class="form-check-input" name="favourite" value="true" {{ $currentContact->is_favourite === 1 ? 'checked' : '' }}>
+                <label class="form-check-label" for="favourite">Marcar favorito</label>
+            </div>
             <button class="send-but bg-primary mt-4 text-white btn-md rounded-2 px-3" type="submit" name="send-new">Enviar</button>
         </form>
         </div>
