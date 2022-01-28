@@ -7,7 +7,9 @@
         <div class="vh-100 p-4 bg-dark text-warning w-25" style="border-right: solid 10px blue;">
             <div class="h-75">
                 <div>
-                    <img width="120rem" height="120rem" alt="phonebook-logo" src="{{ asset('img/phonebook-logo-mini.png') }}" />
+                    <a href="/contacts">
+                        <img width="120rem" height="120rem" alt="phonebook-logo" src="{{ asset('img/phonebook-logo-mini.png') }}" />
+                    </a>
                     <h1 class="h5">Añadir contacto</h1>
                 </div>
 
@@ -55,10 +57,31 @@
                     <label>Teléfono</label>
                     <input class="form-control" type="text" name="phone" placeholder="Teléfono" required/>
                 </div>
-                <div class="form-group">
-                    <label>Tipo</label>
-                    <input class="form-control" type="text" name="phone-type" placeholder="Tipo: Casa, Móvil, Trabajo..."required/>
-                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Tipo</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="phone-type" id="mobile-radio" value="Móvil">
+                                <label class="form-check-label" for="mobile">
+                                    Móvil
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="phone-type" id="home" value="Casa">
+                                <label class="form-check-label" for="home">
+                                    Casa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="phone-type" id="work" value="Trabajo">
+                                <label class="form-check-label" for="work">
+                                    Trabajo
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
                 <button class="send-but bg-primary mt-4 text-white btn-md rounded-2 px-3" type="submit" name="send-new">Enviar</button>
             </form>
         </div>

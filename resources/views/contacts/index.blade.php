@@ -8,7 +8,9 @@
     <div class="vh-100 p-4 bg-dark text-warning w-25" style="border-right: solid 10px blue;">
         <div class="h-75">
             <div>
-                <img width="120rem" height="120rem" alt="phonebook-logo" src="{{ asset('img/phonebook-logo-mini.png') }}" />
+                <a href="/">
+                    <img width="120rem" height="120rem" alt="phonebook-logo" src="{{ asset('img/phonebook-logo-mini.png') }}" />
+                </a>
                 <h1 class="h5">Agenda de {{ Auth::user()->name }}</h1>
                 <form class="mt-4" method="get" action="/contacts/create">
                     @csrf
