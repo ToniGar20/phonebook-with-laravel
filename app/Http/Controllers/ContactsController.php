@@ -111,9 +111,6 @@ class ContactsController extends Controller
     {
         $currentContact = Contacts::where('id', $id)->delete();
 
-        // It is possible to call the global variable since it will exist when the code is executed
-        $activeUserId = $_COOKIE['activeUser'];
-
         // Redirecting to the user contact list
         return redirect('contacts');
     }
