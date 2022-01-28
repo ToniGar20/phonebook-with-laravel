@@ -20,6 +20,8 @@ class CreateContactsTable extends Migration
             $table->string('last_name', 50);
             $table->integer('phone');
             $table->string('phone_type', 50);
+            $table->string('description', 50)->nullable();
+            $table->boolean('is_favourite');
             $table->unsignedInteger('users_id');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));;
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));;
