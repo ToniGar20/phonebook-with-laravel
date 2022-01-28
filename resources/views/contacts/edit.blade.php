@@ -1,6 +1,6 @@
 @extends('layouts.base-layout')
 
-@section('title','Editar Contacto')
+@section('title','Editar Contacto | Agenda')
 
 @section('content')
     <div class="d-flex col-12 bg-light">

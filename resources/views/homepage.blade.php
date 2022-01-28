@@ -7,7 +7,7 @@
         @auth
             <div class="d-flex align-items-center">
                 <span class="p-2">¡Bienvenid@, {{ Auth::user()->name }}!</span>
-                <a class="p-2" href="/contacts">Agenda de contactos</a>
+                <a class="p-2" href="/contacts">Accede a tu agenda</a>
             </div>
             <div class="d-flex justify-content-end align-items-center">
                 <form method="POST" action="/logout">

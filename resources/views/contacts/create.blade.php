@@ -1,6 +1,6 @@
 @extends('layouts.base-layout')
 
-@section('title','Editar Contacto')
+@section('title','Crear Contacto | Agenda')
 
 @section('content')
     <div class="d-flex col-12 bg-light">
@@ -34,7 +34,6 @@
                     <ul>
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
-                            // {\!! $errors->first('nameofinput', ':messageOferror') !!}
                         @endforeach
                     </ul>
                 </div>
@@ -43,7 +42,7 @@
             <form class="d-flex flex-column w-50" method="post" action="/contacts">
                 <!--  Token generation -->
             @csrf
-            @method('PUT') <!-- Necesario especificarlo porque hay que modificar un registro. Si no se especifica dará un error porque la ruta edit solamente se sooporta con PUT -->
+            @method('POST') <!-- Necesario especificarlo porque hay que modificar un registro. Si no se especifica dará un error porque la ruta edit solamente se sooporta con PUT -->
                 <div class="form-group">
                     <label> Nombre </label>
                     <input class="form-control" type="text" name="first-name" placeholder="Nombre" required/>
