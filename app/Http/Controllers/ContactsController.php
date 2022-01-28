@@ -48,7 +48,7 @@ class ContactsController extends Controller
             'last_name' => $request->input('last-name'),
             'phone' => $request->input('phone'),
             'phone_type' => $request->input('phone-type'),
-            'users_id' => $request->input('active-user')
+            'users_id' => Auth::user()->id
         ]);
 
         // Redirecting to the user contact list
