@@ -14,13 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Contacts main routes (resource)
-Route::resource('contacts', ContactsController::class);
+// Contacts main routes (resource). Adding Middleware calls redirectTo method of Authenticate Middleware
+Route::resource('contacts', ContactsController::class)->middleware(['auth']);
 
 Route::get('/', function () { return view('homepage');});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 
 require __DIR__.'/auth.php';
