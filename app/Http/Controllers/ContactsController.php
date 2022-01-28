@@ -107,7 +107,7 @@ class ContactsController extends Controller
             'last_name' => $request->input('last-name'),
             'phone' => $request->input('phone'),
             'phone_type' => $request->input('phone-type'),
-            'description' => $request->input('desciption'),
+            'description' => $request->input('description'),
             'is_favourite' => $favouriteValue
         ]);
 
