@@ -74,7 +74,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="phone-type" id="work" value="Trabajo" {{ 'phone-type', $currentContact->phone_type === 'Trabajo' ? 'checked' : '' }}/>
+                            <input class="form-check-input" type="radio" name="phone-type" id="work" value="Trabajo" {{ $currentContact->phone_type === 'Trabajo' ? 'checked' : '' }}/>
                             <label class="form-check-label" for="work">
                                 Trabajo
                             </label>
