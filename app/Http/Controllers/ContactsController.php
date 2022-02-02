@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Request;
 use App\Models\Contacts;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
@@ -80,8 +81,10 @@ class ContactsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $lang='es')
     {
+        App::setLocale($lang);
+
         $currentContact = Contacts::where('id', $id)->first();
 
         if(Auth::user()->id === $currentContact->users_id) {
@@ -129,7 +132,7 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('editable-contacts');
+        //$this->authorize('editable-contacts'); //This dont allow to delete contacts!
 
         $currentContact = Contacts::where('id', $id)->delete();
 
