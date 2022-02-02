@@ -83,7 +83,12 @@ class ContactsController extends Controller
     public function edit($id)
     {
         $currentContact = Contacts::where('id', $id)->first();
-        return view ('contacts.edit')->with('currentContact', $currentContact);
+
+        if(Auth::user()->id === $currentContact->users_id) {
+            return view('contacts.edit')->with('currentContact', $currentContact);
+        } else {
+            abort(403);
+        }
     }
 
     /**
@@ -124,6 +129,8 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('editable-contacts');
+
         $currentContact = Contacts::where('id', $id)->delete();
 
         // Redirecting to the user contact list
