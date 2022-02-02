@@ -8,20 +8,22 @@
             <div class="h-75">
                 <div>
                     <a href="/contacts">
-                        <img width="120rem" height="120rem" alt="phonebook-logo" src="{{ asset('img/phonebook-logo-mini.png') }}" />
+                        <img width="120rem" height="120rem" alt="phonebook-logo"
+                             src="{{ asset('img/phonebook-logo-mini.png') }}"/>
                     </a>
-                    <h1 class="h5">Editar contacto de {{ $currentContact->first_name }}</h1>
+                    <h1 class="h5">@lang('Editar contacto de') {{ $currentContact->first_name }}</h1>
                 </div>
 
-                <div class="d-flex flex-column justify-content-end" style="height: 90%;">
+                <div class="d-flex flex-column justify-content-end" style="height: 90%">
                     <div class="mt-4">
-                        <a class="text-white text-decoration-none" href="/contacts">Volver a contactos</a>
+                        <a class="text-white text-decoration-none" href="/contacts">@lang('Volver a contactos')</a>
                     </div>
                     <div>
                         <div class="mt-4"><!-- Logout -->
                             <form method="POST" action="/logout">
                                 @csrf
-                                <button class="bg-warning text-white btn-md rounded-2 px-3" type="submit">Cerrar sesión</button>
+                                <button class="bg-info text-white btn-md rounded-2 px-3"
+                                        type="submit">@lang('Cerrar sesión')</button>
                             </form>
                         </div>
                     </div>
@@ -29,69 +31,89 @@
             </div>
         </div>
 
-        <div class="d-flex col-8 justify-content-center align-items-start p-5">
+        <div class="d-flex col-8 justify-content-center align-items-center p-5 w-75">
 
-        @if($errors->any())
-            <div>
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form class="d-flex flex-column w-50" method="post" action="/contacts/{{ $currentContact->id }}">
-            <!--  Token generation -->
-        @csrf
-        @method('PUT') <!-- Necesario especificarlo porque hay que modificar un registro. Si no se especifica dará un error porque la ruta edit solamente se sooporta con PUT -->
-            <div class="form-group mt-4">
-                <label> Nombre </label>
-                <input class="form-control" type="text" name="first-name" placeholder="Nombre" value="{{ old('first-name', $currentContact->first_name) }}" required/>
-            </div>
-            <div class="form-group mt-4">
-                <label>Apellido/s</label>
-                <input class="form-control" type="text" name="last-name" placeholder="Apellido/s" value="{{ old('last-name', $currentContact->last_name) }}" required/>
-            </div>
-            <div class="form-group mt-4">
-                <label>Teléfono</label>
-                    <input class="form-control" type="text" name="phone" placeholder="Teléfono" value="{{ old('phone', $currentContact->phone) }}" required/>
-            </div>
-            <fieldset class="form-group mt-4">
-                <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Tipo</legend>
-                    <div class="col-sm-10">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="phone-type" id="mobile-radio" value="Móvil" {{ $currentContact->phone_type === 'Móvil' ? 'checked' : '' }}/>
-                            <label class="form-check-label" for="mobile">
-                                Móvil
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="phone-type" id="home" value="Casa" {{ $currentContact->phone_type === 'Casa' ? 'checked' : '' }}/>
-                            <label class="form-check-label" for="home">
-                                Casa
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="phone-type" id="work" value="Trabajo" {{ $currentContact->phone_type === 'Trabajo' ? 'checked' : '' }}/>
-                            <label class="form-check-label" for="work">
-                                Trabajo
-                            </label>
-                        </div>
-                    </div>
+            @if($errors->any())
+                <div>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-            </fieldset>
-            <div class="form-group mt-4">
-                <label for="description">Descripción (opcional)</label>
-                <textarea class="form-control" name="description" rows="3">{{ old('description', $currentContact->description) }}</textarea>
+            @endif
+
+            <div class="d-flex flex-column justify-content-center w-75 align-items-center">
+                <div class="d-flex justify-content-center">
+                    <form action="http://laravel-phonebook.com/contacts/{{ $currentContact->id }}/edit/es">
+                            <input type="image" class="mr-4" src="{{ asset('img/es-flag.png') }}" style="width:30px; height: 20px; margin-right: 20px;"/>
+                    </form>
+                    <form action="http://laravel-phonebook.com/contacts/{{ $currentContact->id }}/edit/en">
+                        <input type="image" class="" src="{{ asset('img/uk-flag.png') }}" style="width:30px; height: 20px">
+                    </form>
+                </div>
+
+                <form class="d-flex flex-column w-75" method="post" action="/contacts/{{ $currentContact->id }}">
+                    <!--  Token generation -->
+                @csrf
+                @method('PUT') <!-- Necesario especificarlo porque hay que modificar un registro. Si no se especifica dará un error porque la ruta edit solamente se sooporta con PUT -->
+                    <div class="form-group mt-4">
+                        <label> @lang('Nombre') </label>
+                        <input class="form-control" type="text" name="first-name" placeholder="Nombre"
+                               value="{{ old('first-name', $currentContact->first_name) }}" required/>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label>@lang('Apellido/s')</label>
+                        <input class="form-control" type="text" name="last-name" placeholder="Apellido/s"
+                               value="{{ old('last-name', $currentContact->last_name) }}" required/>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label>@lang('Teléfono')</label>
+                        <input class="form-control" type="text" name="phone" placeholder="Teléfono"
+                               value="{{ old('phone', $currentContact->phone) }}" required/>
+                    </div>
+                    <fieldset class="form-group mt-4">
+                        <div class="row">
+                            <legend class="col-form-label col-sm-2 pt-0">@lang('Tipo')</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="phone-type" id="mobile-radio"
+                                           value="Móvil" {{ $currentContact->phone_type === 'Móvil' ? 'checked' : '' }}/>
+                                    <label class="form-check-label" for="mobile">
+                                        @lang('Móvil')
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="phone-type" id="home"
+                                           value="Casa" {{ $currentContact->phone_type === 'Casa' ? 'checked' : '' }}/>
+                                    <label class="form-check-label" for="home">
+                                        @lang('Casa')
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="phone-type" id="work"
+                                           value="Trabajo" {{ $currentContact->phone_type === 'Trabajo' ? 'checked' : '' }}/>
+                                    <label class="form-check-label" for="work">
+                                        @lang('Trabajo')
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group mt-4">
+                        <label for="description">@lang('Descripción (opcional)')</label>
+                        <textarea class="form-control" name="description"
+                                  rows="3">{{ old('description', $currentContact->description) }}</textarea>
+                    </div>
+                    <div class="form-check mt-4">
+                        <input type="checkbox" class="form-check-input" name="favourite"
+                               value="true" {{ $currentContact->is_favourite === 1 ? 'checked' : '' }}>
+                        <label class="form-check-label" for="favourite">@lang('Marcar favorito')</label>
+                    </div>
+                    <button class="send-but bg-primary mt-4 text-white btn-md rounded-2 px-3" type="submit"
+                            name="send-new">@lang('Enviar')</button>
+                </form>
             </div>
-            <div class="form-check mt-4">
-                <input type="checkbox" class="form-check-input" name="favourite" value="true" {{ $currentContact->is_favourite === 1 ? 'checked' : '' }}>
-                <label class="form-check-label" for="favourite">Marcar favorito</label>
-            </div>
-            <button class="send-but bg-primary mt-4 text-white btn-md rounded-2 px-3" type="submit" name="send-new">Enviar</button>
-        </form>
         </div>
     </div>
 @endsection
