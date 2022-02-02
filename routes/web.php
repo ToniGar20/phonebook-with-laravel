@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactsController;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Contacts main routes (resource). Adding Middleware calls redirectTo method of Authenticate Middleware
-Route::resource('contacts', ContactsController::class)->middleware(['auth']);
+Route::resource('contacts', ContactsController::class)->middleware(Authenticate::class, 'redirectTo');
 
 Route::get('/', function () { return view('homepage');});
 
