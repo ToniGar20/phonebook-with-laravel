@@ -6,13 +6,13 @@
     <header class="d-flex justify-content-evenly flex-row w-100 mt-4">
         @auth
             <div class="d-flex align-items-center">
-                <span class="p-2">¡Bienvenid@, {{ Auth::user()->name }}!</span>
+                <span class="p-2">¡Bienvenid@, <b>{{ Auth::user()->name }}</b>!</span>
                 <a class="p-2" href="/contacts">Accede a tu agenda</a>
             </div>
             <div class="d-flex justify-content-end align-items-center">
                 <form method="POST" action="/logout">
                     @csrf
-                    <button class="bg-warning text-white btn-md rounded-2 px-3" type="submit">Cerrar sesión</button>
+                    <button class="bg-info text-white btn-md rounded-2 px-3" type="submit">Cerrar sesión</button>
                 </form>
             </div>
         @endauth

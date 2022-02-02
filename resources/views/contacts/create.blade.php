@@ -21,7 +21,7 @@
                         <div class="mt-4"><!-- Logout -->
                             <form method="POST" action="/logout">
                                 @csrf
-                                <button class="bg-warning text-white btn-md rounded-2 px-3" type="submit">Cerrar sesión</button>
+                                <button class="bg-info text-white btn-md rounded-2 px-3" type="submit">Cerrar sesión</button>
                             </form>
                         </div>
                     </div>

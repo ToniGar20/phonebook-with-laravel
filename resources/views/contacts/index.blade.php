@@ -28,7 +28,7 @@
                     <div class="mt-4"><!-- Logout -->
                         <form method="POST" action="/logout">
                             @csrf
-                            <button class="bg-warning text-white btn-md rounded-2 px-3" type="submit">Cerrar sesión</button>
+                            <button class="bg-info text-white btn-md rounded-2 px-3" type="submit">Cerrar sesión</button>
                         </form>
                     </div>
                 </div>
@@ -59,11 +59,26 @@
                         ?>
                     </td>
                     <td class="d-flex d-row">
-                        <a href="/contacts/{{ $register->id }}/edit">✏️</a>
+                        <form method="get" action="/contacts/{{ $register->id }}">
+                            @csrf
+                            @method('GET')
+                            <li class="list-inline-item">
+                                <button class="btn btn-primary btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Detalles"><i class="fa fa-table"></i></button>
+                            </li>
+                        </form>
+                        <form method="get" action="/contacts/{{ $register->id }}/edit">
+                            @csrf
+                            @method('GET')
+                            <li class="list-inline-item">
+                                <button class="btn btn-success btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></button>
+                            </li>
+                        </form>
                         <form method="post" action="/contacts/{{ $register->id }}">
                             @csrf
                             @method('DELETE')
-                            <button class="bg-transparent btn-default" type="submit">🗑️</button>
+                            <li class="list-inline-item">
+                                <button class="btn btn-danger btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button>
+                            </li>
                         </form>
                     </td>
                 </tr>
