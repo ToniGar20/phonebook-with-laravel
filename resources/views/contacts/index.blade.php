@@ -37,54 +37,58 @@
     </div>
 
     <div class="d-flex col-8 justify-content-start align-items-start p-5">
-        <table class="table table-dark">
-            <tbody>
-            <tr>
-                <th class="bg-primary text-white">Nombre</th>
-                <th class="bg-primary text-white">Apellido/s</th>
-                <th class="bg-primary text-white">Teléfono</th>
-                <th class="bg-primary text-white">Tipo</th>
-                <th class="bg-primary text-white">Fecha</th>
-                <th class="bg-primary text-white">Acciones</th>
-            </tr>
-            @foreach ($currentUserContacts as $register)
+        @if(sizeof($currentUserContacts) === 0)
+                <p>No tienes contactos para mostrar. ¡Añade uno!</p>
+        @else
+            <table class="table table-dark">
+                <tbody>
                 <tr>
-                    <td>{{ $register->first_name }}</td>
-                    <td>{{ $register->last_name }}</td>
-                    <td class="text-warning">{{ $register->phone }}</td>
-                    <td>{{ $register->phone_type }}</td>
-                    <td><?php
-                        $split = explode(" ", $register->updated_at);
-                        echo $split[0];
-                        ?>
-                    </td>
-                    <td class="d-flex d-row">
-                        <form method="get" action="/contacts/{{ $register->id }}">
-                            @csrf
-                            @method('GET')
-                            <li class="list-inline-item">
-                                <button class="btn btn-primary btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Detalles"><i class="fa fa-table"></i></button>
-                            </li>
-                        </form>
-                        <form method="get" action="/contacts/{{ $register->id }}/edit">
-                            @csrf
-                            @method('GET')
-                            <li class="list-inline-item">
-                                <button class="btn btn-success btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></button>
-                            </li>
-                        </form>
-                        <form method="post" action="/contacts/{{ $register->id }}">
-                            @csrf
-                            @method('DELETE')
-                            <li class="list-inline-item">
-                                <button class="btn btn-danger btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button>
-                            </li>
-                        </form>
-                    </td>
+                    <th class="bg-primary text-white">Nombre</th>
+                    <th class="bg-primary text-white">Apellido/s</th>
+                    <th class="bg-primary text-white">Teléfono</th>
+                    <th class="bg-primary text-white">Tipo</th>
+                    <th class="bg-primary text-white">Fecha</th>
+                    <th class="bg-primary text-white">Acciones</th>
                 </tr>
-            @endforeach
-            </tbody>
+                @foreach ($currentUserContacts as $register)
+                    <tr>
+                        <td>{{ $register->first_name }}</td>
+                        <td>{{ $register->last_name }}</td>
+                        <td class="text-warning">{{ $register->phone }}</td>
+                        <td>{{ $register->phone_type }}</td>
+                        <td><?php
+                            $split = explode(" ", $register->updated_at);
+                            echo $split[0];
+                            ?>
+                        </td>
+                        <td class="d-flex d-row">
+                            <form method="get" action="/contacts/{{ $register->id }}">
+                                @csrf
+                                @method('GET')
+                                <li class="list-inline-item">
+                                    <button class="btn btn-primary btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Detalles"><i class="fa fa-table"></i></button>
+                                </li>
+                            </form>
+                            <form method="get" action="/contacts/{{ $register->id }}/edit">
+                                @csrf
+                                @method('GET')
+                                <li class="list-inline-item">
+                                    <button class="btn btn-success btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></button>
+                                </li>
+                            </form>
+                            <form method="post" action="/contacts/{{ $register->id }}">
+                                @csrf
+                                @method('DELETE')
+                                <li class="list-inline-item">
+                                    <button class="btn btn-danger btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button>
+                                </li>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
         </table>
+        @endif
     </div>
     </div>
 @endsection
