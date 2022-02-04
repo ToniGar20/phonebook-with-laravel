@@ -69,8 +69,10 @@ class ContactsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $lang='es')
     {
+        App::setLocale($lang);
+
         $currentContact = Contacts::where('id', $id)->first();
         return view ('contacts.show')->with('currentContact', $currentContact);
     }

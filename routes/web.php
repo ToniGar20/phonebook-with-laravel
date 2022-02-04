@@ -20,8 +20,10 @@ Route::resource('contacts', ContactsController::class)->middleware(Authenticate:
 
 Route::get('/', function () { return view('homepage');})->name('homepage');
 
-//Route for languages at edit form
+//Route for languages at edit/show form
 Route::get('contacts/{contact}/edit/{lang?}', [ContactsController::class, 'edit']);
+Route::get('contacts/{contact}/{lang?}', [ContactsController::class, 'show']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
