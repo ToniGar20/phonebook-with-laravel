@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // Contacts main routes (resource). Adding Middleware calls redirectTo method of Authenticate Middleware
 Route::resource('contacts', ContactsController::class)->middleware(Authenticate::class, 'redirectTo');
 
-Route::get('/', function () { return view('homepage');});
+Route::get('/', function () { return view('homepage');})->name('homepage');
 
 //Route for languages at edit form
 Route::get('contacts/{contact}/edit/{lang?}', [ContactsController::class, 'edit']);
