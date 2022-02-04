@@ -7,10 +7,9 @@
         @auth
             <div class="d-flex align-items-center">
                 <span class="p-2">¡Bienvenid@, <b>{{ Auth::user()->name }}</b>!</span>
-                <a class="p-2" href="/contacts">Accede a tu agenda</a>
             </div>
             <div class="d-flex justify-content-end align-items-center">
-                <form method="POST" action="/logout">
+                <form method="POST" action='{{ route('logout') }}'>
                     @csrf
                     <button class="bg-info text-white btn-md rounded-2 px-3" type="submit">Cerrar sesión</button>
                 </form>
@@ -29,14 +28,12 @@
 
         <div class="d-flex justify-content-center mt-4">
         @auth
-            <button class="bg-primary text-white btn-md rounded-2 px-3" onclick="window.location.href='/contacts'">Acceso</button>
-            &nbsp;
-            <button class="bg-primary text-white btn-md rounded-2 px-3" onclick="window.location.href='/contacts'">Registro</button>
+            <button class="bg-primary text-white btn-md rounded-2 px-3" onclick="window.location.href='{{ route('contacts.index') }}'">Accede a tu agenda</button>
         @endauth
         @guest
-            <button class="btn-primary btn-md rounded-2 px-3" onclick="window.location.href='/login'">Acceso</button>
+            <button class="btn-primary btn-md rounded-2 px-3" onclick="window.location.href='{{ route('login') }}'">Acceso</button>
             &nbsp;&nbsp;
-            <button class="btn-primary btn-md rounded-2 px-3" onclick="window.location.href='/register'">Registro</button>
+            <button class="btn-primary btn-md rounded-2 px-3" onclick="window.location.href='{{ route('register') }}'">Registro</button>
         @endguest
         </div>
 

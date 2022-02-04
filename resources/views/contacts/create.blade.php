@@ -7,7 +7,7 @@
         <div class="vh-100 p-4 bg-dark text-warning w-25" style="border-right: solid 10px blue;">
             <div class="h-75">
                 <div>
-                    <a href="/contacts">
+                    <a href="{{ route('contacts.index') }}">
                         <img width="120rem" height="120rem" alt="phonebook-logo" src="{{ asset('img/phonebook-logo-mini.png') }}" />
                     </a>
                     <h1 class="h5">Añadir contacto</h1>
@@ -15,7 +15,7 @@
 
                 <div class="d-flex flex-column justify-content-end" style="height: 90%;">
                     <div class="mt-4">
-                        <a class="text-white text-decoration-none" href="/contacts">Volver a contactos</a>
+                        <a class="text-white text-decoration-none" href="{{ route('contacts.index') }}">Volver a contactos</a>
                     </div>
                     <div>
                         <div class="mt-4"><!-- Logout -->
