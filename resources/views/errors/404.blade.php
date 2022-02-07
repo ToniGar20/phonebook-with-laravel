@@ -26,7 +26,7 @@
                         Lo sentimos, ha ocurrido un error. El archivo solicitado no existe.
                     </div>
                     <div class="error-actions">
-                        <a href="{{ route('homepage') }}" class="btn btn-primary btn-lg">
+                        <a href="{{ route('contacts.index') }}" class="btn btn-primary btn-lg">
                             <span class="glyphicon glyphicon-home"></span>
                             Volver a Contactos
                         </a>
