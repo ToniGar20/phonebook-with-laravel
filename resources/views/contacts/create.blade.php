@@ -35,7 +35,7 @@
                 <div class="alert alert-danger">
                     <ul>
                         @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <li>{{ trans($error) }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -69,7 +69,7 @@
                 </div>
                 <fieldset class="form-group mt-4">
                     <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Tipo</legend>
+                        <legend class="col-form-label col-sm-2 pt-0">@lang('Tipo')</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="phone-type" id="mobile-radio" value="Móvil" {{ (old('phone-type') === 'Móvil') ? 'checked' : '' }}>
