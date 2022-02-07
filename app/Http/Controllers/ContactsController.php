@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Contacts;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ContactsController extends Controller
 {
@@ -49,6 +50,19 @@ class ContactsController extends Controller
             $favouriteValue = 1;
         }
 
+        //Method 1 -> Raw
+//        $values = array(
+//            'first_name' => $request->input('first-name'),
+//            'last_name' => $request->input('last-name'),
+//            'phone' => $request->input('phone'),
+//            'phone_type' => $request->input('phone-type'),
+//            'description' => $request->input('description'),
+//            'is_favourite' => $favouriteValue,
+//            'users_id' => Auth::user()->id
+//            );
+//        DB::table('contacts')->insert($values);
+
+        //Method 2 -> Query buildr (active one)
         Contacts::create([
             'first_name' => $request->input('first-name'),
             'last_name' => $request->input('last-name'),
@@ -58,6 +72,16 @@ class ContactsController extends Controller
             'is_favourite' => $favouriteValue,
             'users_id' => Auth::user()->id
         ]);
+
+        //Method 3 -> Eloquent
+//        $contacts = new Contacts();
+//        $contacts->first_name = $request->input('first-name');
+//        $contacts->last_name = $request->input('last-name');
+//        $contacts->phone = $request->input('phone');
+//        $contacts->phone_type = $request->input('phone-type');
+//        $contacts->description = $request->input('description');
+//        $contacts->is_favourite = $favouriteValue;
+//        $contacts->users_id = Auth::user()->id;
 
         return redirect('contacts');
 
