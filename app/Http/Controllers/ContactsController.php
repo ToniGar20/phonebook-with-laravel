@@ -160,7 +160,7 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        //$this->authorize('editable-contacts'); //This dont allow to delete contacts!
+        $this->authorize('delete-permissions'); //This dont allow to delete contacts!
 
         $currentContact = Contacts::where('id', $id)->delete();
 
