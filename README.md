@@ -7,7 +7,7 @@ Online phonebook developed with Laravel to register/login and CRUD operations wi
 - Seeders with some users and contacts.
 - Resource controller.
 - Delete operations can just be executed by user with "id" 1 (Gate)
-- At /contacts page it is displayed a chart to create/edit/show/delete a contact (keep in mind the previous point )
-- Home default page after login is /contacts
+- At "/contacts" page it is displayed a chart to create/edit/show/delete contacts (keep in mind the previous point )
+- Home default page after login is "/contacts"
 - ES/EN languages at form of create/edit/show contact
 - Deployed at http://tgarciawolf.ddns.net/ (2022-02-07)
