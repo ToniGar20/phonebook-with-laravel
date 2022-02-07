@@ -45,10 +45,10 @@
 
             <div class="d-flex flex-column justify-content-center w-75 align-items-center">
                 <div class="d-flex justify-content-center">
-                    <form action="http://laravel-phonebook.com/contacts/{{ $currentContact->id }}/edit/es">
+                    <form action="/contacts/{{ $currentContact->id }}/edit/es">
                             <input type="image" class="mr-4" src="{{ asset('img/es-flag.png') }}" style="width:30px; height: 20px; margin-right: 20px;"/>
                     </form>
-                    <form action="http://laravel-phonebook.com/contacts/{{ $currentContact->id }}/edit/en">
+                    <form action="/contacts/{{ $currentContact->id }}/edit/en">
                         <input type="image" class="" src="{{ asset('img/uk-flag.png') }}" style="width:30px; height: 20px">
                     </form>
                 </div>
