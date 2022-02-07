@@ -30,8 +30,10 @@ class ContactsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($lang='es')
     {
+        App::setLocale($lang);
+
         return view('contacts.create');
     }
 

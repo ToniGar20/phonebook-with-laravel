@@ -20,14 +20,10 @@ Route::resource('contacts', ContactsController::class)->middleware(Authenticate:
 
 Route::get('/', function () { return view('homepage');})->name('homepage');
 
-//Route for languages at edit/show form
-Route::get('contacts/{contact}/edit/{lang?}', [ContactsController::class, 'edit']);
+//Route for languages at edit/show/create form
+Route::get('contacts/create/{lang?}', [ContactsController::class, 'create']);
 Route::get('contacts/{contact}/{lang?}', [ContactsController::class, 'show']);
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('contacts/{contact}/edit/{lang?}', [ContactsController::class, 'edit']);
 
 
 require __DIR__.'/auth.php';
