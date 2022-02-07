@@ -3,7 +3,7 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-@section('title','Error 403 | Agenda')
+@section('title','Error 401 | Agenda')
 
 <style>
     * {font-size: 3rem}
@@ -21,13 +21,15 @@
                     <h1>
                         ¡Oops!</h1>
                     <h2>
-                        Error 403.</h2>
+                        Error 401</h2>
                     <div class="error-details">
-                        Lo sentimos, ha ocurrido un error. No dispones de permisos para realizar esa acción.
+                        Lo sentimos, ha ocurrido un error
                     </div>
                     <div class="error-actions">
-                        <a href="{{ route('homepage') }}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                            Volver a la Home</a><a href="{{ route('contacts.index') }}" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contactos </a>
+                        <a href="{{ route('homepage') }}" class="btn btn-primary btn-lg">
+                            <span class="glyphicon glyphicon-home"></span>
+                            Volver a Contactos
+                        </a>
                     </div>
                 </div>
             </div>
