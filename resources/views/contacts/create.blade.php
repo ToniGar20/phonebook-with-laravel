@@ -32,7 +32,7 @@
         <div class="d-flex col-8 justify-content-center align-items-start p-5 w-75">
 
             @if($errors->any())
-                <div>
+                <div class="alert alert-danger">
                     <ul>
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
