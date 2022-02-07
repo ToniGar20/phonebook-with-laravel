@@ -18,6 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
 
+    //Homepage changed to /contacts
     public const HOME = '/contacts';
 
     /**
